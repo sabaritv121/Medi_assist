@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+{% load crispy_forms_filters %}
+
+<div class="col-lg-10">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">USERS LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">name</th>
+
+
+                    <th scope="col">Contact number</th>
+                    <th scope="col">Email</th>
+                     <th scope="col">Aadhar number</th>
+                    <th scope="col">Blood Group</th>
+                     <th scope="col">Profile pic</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in user %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.name}}</td>
+
+                    <td>{{n.contact_no}}</td>
+                    <td>{{n.email}}</td>
+                    <td>{{n.blood_group}}</td>
+                    <td>{{n.adhar_number}}</td>
+
+                    <td><img src="{{n.profile_pic.url}}" style="width:100px"/></td>
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ {% endblock %}

@@ -64,4 +64,4 @@ class CashRequestForm(forms.ModelForm):
     class Meta:
         model = Cash_request
         fields = "__all__"
-        exclude = ('user','status_1')
+        exclude = ('user','status_12')

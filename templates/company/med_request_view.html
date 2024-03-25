@@ -1,9 +1,8 @@
-{% extends 'user_base.html' %}
+{% extends 'donator_base.html' %}
 
  {% block content %}
 {% load crispy_forms_filters %}
-
-<div class="col-lg-10">
+<div class="col-lg-20">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
         {{message}}
@@ -11,7 +10,7 @@
     {% endfor %}
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">YOUR MEDICINE REQUESTS</strong>
+            <strong class="card-title">MEDICINE REQUESTS</strong>
         </div>
         <div class="card-body">
             <table class="table table-striped">

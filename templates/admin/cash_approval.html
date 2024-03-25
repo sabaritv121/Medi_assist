@@ -20,12 +20,12 @@
                     <th scope="col">SI No</th>
                     <th scope="col">Company</th>
                      <th scope="col">User</th>
-                    <th scope="col">Start date</th>
+
 
 
                     <th scope="col">end date</th>
-                    <th scope="col">medicine</th>
-                     <th scope="col">quantity</th>
+                    <th scope="col">description</th>
+                     <th scope="col">amount</th>
                     <th scope="col">Approval</th>
 
 
@@ -37,26 +37,28 @@
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{n.user.name}}</td>
                      <td>{{n.approval.user}}</td>
-                    <td>{{n.approval.start_date}}</td>
+
 
                     <td>{{n.approval.end_date}}</td>
-                    <td>{{n.approval.medicine}}</td>
-                     <td>{{n.approval.quantity}}</td>
-                     <td>
-                        {% if n.approval.status_1 == 1 %}
+                    <td>{{n.approval.description}}</td>
+                     <td>{{n.approval.amount}}</td>
 
-                        <a type="button" class="btn btn-success" href="{% url 'approve_donation' n.id %}">Approve</a>
-                        <form action="{% url 'reject_donation' n.id %}" method="post" style="display: inline;"
-                              onsubmit="window.mytest()">
-                            {% csrf_token %}
-                            <input type="hidden" value="{{ n.id }}"/>
-                            <button class="btn btn-danger">Reject</Button>
-                        </form>
-                        {% elif n.approval.status_1 == 2 %}
+
+                     <td>
+                            {% if n.approval.status_12 == 1 %}
+
+                            <a type="button" class="btn btn-success" href="{% url 'approve_cash_donation' n.id %}">Approve</a>
+                            <form action="{% url 'reject_cash_donation' n.id %}" method="post" style="display: inline;"
+                                  onsubmit="window.mytest()">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{ n.id }}"/>
+                                <button class="btn btn-danger">Reject</Button>
+                            </form>
+                        {% elif n.approval.status_12 == 2 %}
 
                         <button type="button" class="btn btn-success">Approved</button>
 
-                        {% elif n.approval.status_1 == 3 %}
+                        {% elif n.approval.status_12 == 3 %}
                         <button type="button" class="btn btn-danger">Rejected</button>
 
                         {% endif %}

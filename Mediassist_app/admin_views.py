@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from Mediassist_app.forms import LoginRegister, DonorRegister
-from Mediassist_app.models import donor, users, Medicine_approval, Medicine_request
+from Mediassist_app.models import donor, users, Medicine_approval, Medicine_request, Cash_approval, Cash_request
 
 
 class CompanyRegistrationView(View):
@@ -30,7 +30,7 @@ class CompanyRegistrationView(View):
             print(user1)
             user1.user = a
             user1.save()
-            return redirect('login_page')
+            return redirect('admin_base')
         return render(request,'admin/register_cmp.html', {"user": user, "company_form": company_form})
 
 
@@ -69,3 +69,41 @@ def reject_donation(request, id):
     n.save()
     messages.info(request, 'Rejected')
     return redirect('requests')
+
+
+
+def cash_requests(request):
+    data = Cash_approval.objects.all()
+    return render(request, 'admin/cash_approval.html', {'data': data})
+
+def admin_cash_approval(request):
+    data=Cash_approval.objects.filter(approval__status_12 = 1)
+    return render(request,'admin/approval.html',{'data':data})
+
+
+
+
+def approve_cash_donation(request,id):
+    n = Cash_request.objects.get(id=id)
+    print(n)
+    n.status_12 = 2
+
+    n.save()
+    messages.info(request, 'Donation Confirmed')
+    return redirect('cash_requests')
+
+def reject_cash_donation(request, id):
+    n = Cash_request.objects.get(id=id)
+    n.status_12 = 3
+    n.save()
+    messages.info(request, 'Rejected')
+    return redirect('cash_requests')
+
+
+#approve users
+
+def users_approval(request,id):
+    data = users.objects.get(id=id)
+    data.verified = True
+    data.save()
+    return redirect('user_list')

@@ -418,21 +418,23 @@
           </li>
 
 
-          <a href="{% url 'logout_view' %}">
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="typcn typcn-chart-pie-outline menu-icon"></i>
+              <span class="menu-title">Cash Donate</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'cash_view_cmp' %}">Request</a></li>
+              </ul>
+            </div>
+          </li>
+
+           <a href="{% url 'logout_view' %}">
                             <button type="button" class="btn btn-primary">Logout</button>
                         </a>
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">-->
-<!--              <i class="typcn typcn-chart-pie-outline menu-icon"></i>-->
-<!--              <span class="menu-title">Works manager</span>-->
-<!--              <i class="menu-arrow"></i>-->
-<!--            </a>-->
-<!--            <div class="collapse" id="charts">-->
-<!--              <ul class="nav flex-column sub-menu">-->
-<!--                <li class="nav-item"> <a class="nav-link" href="#">Add</a></li>-->
-<!--              </ul>-->
-<!--            </div>-->
-<!--          </li>-->
 <!--          <li class="nav-item">-->
 <!--            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">-->
 <!--              <i class="typcn typcn-th-small-outline menu-icon"></i>-->

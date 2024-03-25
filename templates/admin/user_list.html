@@ -3,7 +3,7 @@
  {% block content %}
 {% load crispy_forms_filters %}
 
-<div class="col-lg-10">
+<div class="col-lg-20">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
         {{message}}
@@ -37,11 +37,23 @@
 
                     <td>{{n.contact_no}}</td>
                     <td>{{n.email}}</td>
-                    <td>{{n.blood_group}}</td>
                     <td>{{n.adhar_number}}</td>
+                    <td>{{n.blood_group}}</td>
 
-                    <td><img src="{{n.profile_pic.url}}" style="width:100px"/></td>
 
+                    <td><img src="{{n.profile_pic.url}}"style="width:90px; height:100px;"></td>
+                    <td>
+                        {% if n.verified == False %}
+
+                            <a type="button" class="btn btn-success" href="{% url 'users_approval' n.id %}">Approve
+
+
+                            {% elif n.verified == True %}
+
+                        <button type="button" class="btn btn-danger">verified account</button>
+
+                           {% endif %}
+                           </td>
 
                 </tr>
                 {% endfor %}

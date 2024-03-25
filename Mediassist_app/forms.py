@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from Mediassist_app.models import Login_view, users, donor, Medicine_request, Medicine_approval
+from Mediassist_app.models import Login_view, users, donor, Medicine_request, Medicine_approval, Cash_request
 
 
 class DateInput(forms.DateInput):
@@ -24,7 +24,7 @@ class UsersRegister(forms.ModelForm):
     class Meta:
         model = users
         fields = "__all__"
-        exclude = ("user",)
+        exclude = ("user",'verified')
 
 
 class DonorRegister(forms.ModelForm):
@@ -45,6 +45,8 @@ class MedicineForm(forms.ModelForm):
         fields = "__all__"
         exclude = ('user','status_1')
 
+
+
 class MedicineAprovalForm(forms.ModelForm):
 
     end_date = forms.DateField(widget=DateInput)
@@ -53,3 +55,13 @@ class MedicineAprovalForm(forms.ModelForm):
         model = Medicine_approval
         fields = "__all__"
 
+
+
+class CashRequestForm(forms.ModelForm):
+
+    end_date = forms.DateField(widget=DateInput)
+
+    class Meta:
+        model = Cash_request
+        fields = "__all__"
+        exclude = ('user','status_1')

@@ -19,6 +19,8 @@ urlpatterns = [
 
    path("med_add",user_views.med_add,name="med_add"),
    path("med_view", user_views.med_view, name="med_view"),
+   path("cash_add",user_views.cash_add,name='cash_add'),
+   path("cash_view",user_views.cash_view,name="cash_view"),
 
    #admin
 
@@ -28,11 +30,21 @@ urlpatterns = [
    path("admin_approval",admin_views.admin_approval,name='admin_approval'),
    path('approve_donation/<int:id>/',admin_views.approve_donation, name='approve_donation'),
    path('reject_donation/<int:id>/',admin_views.reject_donation, name='reject_donation'),
-   path("admin_approval",admin_views.admin_approval,name='admin_approval'),
+   # path("admin_approval",admin_views.admin_approval,name='admin_approval'),
    path('requests',admin_views.requests,name='requests'),
+
+
+   path('cash_requests',admin_views.cash_requests,name='cash_requests'),
+
+   path("admin_cash_approval", admin_views.admin_cash_approval, name='admin_cash_approval'),
+   path('approve_cash_donation/<int:id>/', admin_views.approve_cash_donation, name='approve_cash_donation'),
+   path('reject_cash_donation/<int:id>/', admin_views.reject_cash_donation, name='reject_cash_donation'),
+   path("users_approval/<int:id>/",admin_views.users_approval,name='users_approval'),
 
    #company
    path("med_view_cmp", company_views.med_view_cmp, name="med_view_cmp"),
    path('donate/<int:id>/', company_views.donate, name='donate'),
+   path("cash_view_cmp", company_views.cash_view_cmp, name="cash_view_cmp"),
+   path('donate_cash/<int:id>/', company_views.donate_cash, name='donate_cash'),
 
 ]

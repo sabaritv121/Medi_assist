@@ -440,7 +440,10 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{% url 'admin_approval' %}">View</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'requests' %}">Medicine</a></li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'cash_requests' %}">Cash</a></li>
               </ul>
             </div>
           </li>
@@ -451,8 +454,15 @@
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="icons">
+
+               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'admin_approval' %}">User approval</a></li>
+              </ul>
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{% url 'requests' %}">View</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'admin_approval' %}">Medicine</a></li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'admin_cash_approval' %}">Cash</a></li>
               </ul>
             </div>
           </li>

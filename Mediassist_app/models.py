@@ -27,6 +27,7 @@ class users(models.Model):
     blood_group = models.CharField(choices=BLOOD_GROUP_CHOICES,max_length=50)
     adhar_number = models.CharField(max_length=16)
     profile_pic = models.FileField(upload_to='profilepic/')
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -39,6 +40,7 @@ class donor(models.Model):
     contact_no = models.CharField(max_length=100)
     email = models.EmailField()
     reg_no = models.CharField(max_length=16)
+
 
 
     def __str__(self):
@@ -68,3 +70,21 @@ class Medicine_approval(models.Model):
     approval = models.ForeignKey(Medicine_request, on_delete=models.CASCADE, related_name='approval')
     status1= models.IntegerField(default=0)
     status2 = models.IntegerField(default=0)
+
+
+class Cash_request(models.Model):
+
+
+    user = models.ForeignKey(Login_view, on_delete=models.CASCADE)
+    start_date = models.DateField(auto_now = True)
+    end_date = models.DateField()
+    description = models.CharField(max_length=50)
+    amount = models.CharField(max_length=50)
+    status_12 = models.IntegerField(default=0)
+
+
+#
+class Cash_approval(models.Model):
+    user = models.ForeignKey(donor,on_delete=models.CASCADE)
+    approval = models.ForeignKey(Cash_request, on_delete=models.CASCADE, related_name='approval')
+    status1= models.IntegerField(default=0)

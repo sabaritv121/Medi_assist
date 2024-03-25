@@ -1,8 +1,7 @@
-{% extends 'user_base.html' %}
+{% extends 'donator_base.html' %}
 
- {% block content %}
+{% block content %}
 {% load crispy_forms_filters %}
-
 
 <div class="col-lg-20">
     {% for message in messages %}
@@ -12,7 +11,7 @@
     {% endfor %}
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">MEDICINE REQUESTS</strong>
+            <strong class="card-title">YOUR CASH REQUESTS</strong>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -23,39 +22,47 @@
 
 
                     <th scope="col">end data</th>
-                    <th scope="col">Medicine</th>
-                     <th scope="col">Quantity</th>
+                    <th scope="col">description</th>
+                     <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+
 
                 </tr>
                 </thead>
                 <tbody>
-                {% for n in medicine %}
+                {% for n in cash %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{n.start_date}}</td>
 
                     <td>{{n.end_date}}</td>
-                    <td>{{n.medicine_name}}</td>
-                    <td>{{n.quantity}}</td>
-                    {% if n.status_1 == 0 %}
+                    <td>{{n.description}}</td>
+                    <td>{{n.amount}}</td>
+                    <td>{{n.status_12}}</td>
+                     {% if n.status_12 == 0 %}
                     <td>
-                       Request pending
+                         <a href="{% url 'donate_cash' n.id %}">
+                            <button type="button" class="btn btn-primary">Donate</button>
+                        </a>
                     </td>
 
-                    {% elif n.status_1 == 1 %}
+                    {% elif n.status_12 == 1 %}
 
                     <td>
-                         request processing...waiting for admin approval
+                         waiting for admin approval
                     </td>
-                    {% elif n.status_1 == 2 %}
+                    {% elif n.status_12 == 2 %}
                     <td>
-                        congratulations!! we will reach you soon
+                         Doanation recieved..Thank you for your support
                     </td>
-                    {% elif n.status_1 == 3 %}
+                    {% elif n.status_12 == 3 %}
                     <td>
-                         Please add donation request again..
+                         Please Apply again..
                     </td>
+
                     {% endif %}
+
+
                 </tr>
                 {% endfor %}
                 </tbody>

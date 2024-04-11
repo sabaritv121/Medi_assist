@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
-from Mediassist_app.forms import MedicineForm, CashRequestForm
-from Mediassist_app.models import Medicine_request, donor, users, Cash_request
+from Mediassist_app.forms import MedicineForm, CashRequestForm, FeedbackForm
+from Mediassist_app.models import Medicine_request, donor, users, Cash_request, Feedback
 
 
 def med_add(request):
@@ -57,3 +57,29 @@ def cash_view(request):
     n = Cash_request.objects.filter(user=u)
 
     return render(request, 'users/cash_request_view.html',{'cash':n})
+
+
+
+
+def feedback(request):
+    form=FeedbackForm
+    u= request.user
+
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = u
+            obj.save()
+            messages.info(request,"thank you for your feedback...!!!")
+            return redirect('feedback_view')
+    else:
+        form = FeedbackForm()
+    return render(request,'users/feedback_add.html',{'form':form})
+
+
+
+def feedback_view(request):
+
+    u = Feedback.objects.filter(user=request.user)
+    return render(request,"users/feedback_view.html",{'feedback':u})

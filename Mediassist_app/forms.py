@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from Mediassist_app.models import Login_view, users, donor, Medicine_request, Medicine_approval, Cash_request
+from Mediassist_app.models import Login_view, users, donor, Medicine_request, Medicine_approval, Cash_request, Feedback
 
 
 class DateInput(forms.DateInput):
@@ -65,3 +65,10 @@ class CashRequestForm(forms.ModelForm):
         model = Cash_request
         fields = "__all__"
         exclude = ('user','status_12')
+
+
+class FeedbackForm(forms.ModelForm):
+
+    class Meta:
+        model = Feedback
+        fields = ('feedback',)

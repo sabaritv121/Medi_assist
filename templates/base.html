@@ -466,9 +466,7 @@
               </ul>
             </div>
           </li>
-           <a href="{% url 'logout_view' %}">
-                            <button type="button" class="btn btn-primary">Logout</button>
-                        </a>
+
 
 <!--          <li class="nav-item">-->
 <!--            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">-->
@@ -496,12 +494,16 @@
 <!--              </ul>-->
 <!--            </div>-->
 <!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="https://bootstrapdash.com/demo/polluxui-free/docs/documentation.html">-->
-<!--              <i class="typcn typcn-mortar-board menu-icon"></i>-->
-<!--              <span class="menu-title">Documentation</span>-->
-<!--            </a>-->
-<!--          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'feedbacks' %}">
+              <i class="typcn typcn-mortar-board menu-icon"></i>
+              <span class="menu-title">Complaints</span>
+            </a>
+          </li>
+
+           <a href="{% url 'logout_view' %}">
+                            <button type="button" class="btn btn-primary">Logout</button>
+                        </a>
         </ul>
       </nav>
       <!-- partial -->

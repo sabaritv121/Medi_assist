@@ -88,3 +88,11 @@ class Cash_approval(models.Model):
     user = models.ForeignKey(donor,on_delete=models.CASCADE)
     approval = models.ForeignKey(Cash_request, on_delete=models.CASCADE, related_name='approval')
     status1= models.IntegerField(default=0)
+
+
+#feedbacks and reply
+class Feedback(models.Model):
+    user = models.ForeignKey(Login_view, on_delete=models.DO_NOTHING)
+    feedback = models.TextField()
+    date = models.DateField(auto_now=True)
+    reply = models.TextField(null=True, blank=True)

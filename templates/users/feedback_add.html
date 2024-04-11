@@ -1,27 +1,22 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'user_base.html' %}
 {% load crispy_forms_filters %}
+{% block content %}
 
+<h1> Feedback/Complaints form </h1>
 
-
-
-
-
-<div class="col-lg-20">
+                <div class="col-lg-8">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">REGISTER COMPANY</strong>
+            <strong class="card-title">Customer Feedback</strong>
         </div>
         <div class="card-body">
             <!-- Credit Card -->
             <div id="pay-invoice">
                 <div class="card-body">
 
-                    <form method="post">{% csrf_token %}
+                    <form method="post">{% csrf_token%}
                         <div class="form-group">
-                            {{user|crispy}}
-                            {{company_form|crispy}}
+                            {{form|crispy}}
                         </div>
 
                         <div class="form-actions form-group ">
@@ -40,4 +35,6 @@
     </div> <!-- .card -->
 
 </div>
- {% endblock %}
+
+
+{% endblock %}

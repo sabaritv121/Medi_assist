@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from Mediassist_app.forms import LoginRegister, DonorRegister
-from Mediassist_app.models import donor, users, Medicine_approval, Medicine_request, Cash_approval, Cash_request
+from Mediassist_app.models import donor, users, Medicine_approval, Medicine_request, Cash_approval, Cash_request, \
+    Feedback
 
 
 class CompanyRegistrationView(View):
@@ -107,3 +108,20 @@ def users_approval(request,id):
     data.verified = True
     data.save()
     return redirect('user_list')
+
+
+
+def feedbacks(request):
+    n = Feedback.objects.all()
+    return render(request,'admin/feedbacks.html',{'feedbacks':n})
+
+
+def reply_feedback(request,id):
+    feedback = Feedback.objects.get(id=id)
+    if request.method == 'POST':
+        r = request.POST.get('reply')
+        feedback.reply = r
+        feedback.save()
+        messages.info(request, 'Reply send for complaint')
+        return redirect('feedbacks')
+    return render(request, 'admin/admin_feedback.html', {'feedback': feedback})

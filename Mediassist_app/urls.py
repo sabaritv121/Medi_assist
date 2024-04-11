@@ -21,6 +21,8 @@ urlpatterns = [
    path("med_view", user_views.med_view, name="med_view"),
    path("cash_add",user_views.cash_add,name='cash_add'),
    path("cash_view",user_views.cash_view,name="cash_view"),
+   path("feedback", user_views.feedback, name="feedback"),
+   path("feedback_view", user_views.feedback_view, name="feedback_view"),
 
    #admin
 
@@ -40,6 +42,9 @@ urlpatterns = [
    path('approve_cash_donation/<int:id>/', admin_views.approve_cash_donation, name='approve_cash_donation'),
    path('reject_cash_donation/<int:id>/', admin_views.reject_cash_donation, name='reject_cash_donation'),
    path("users_approval/<int:id>/",admin_views.users_approval,name='users_approval'),
+
+   path('feedbacks',admin_views.feedbacks, name='feedbacks'),
+   path('reply_feedback/<int:id>/',admin_views.reply_feedback, name='reply_feedback'),
 
    #company
    path("med_view_cmp", company_views.med_view_cmp, name="med_view_cmp"),

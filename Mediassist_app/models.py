@@ -86,7 +86,7 @@ class Cash_request(models.Model):
 #
 class Cash_approval(models.Model):
     user = models.ForeignKey(donor,on_delete=models.CASCADE)
-    approval = models.ForeignKey(Cash_request, on_delete=models.CASCADE, related_name='approval')
+    approval = models.ForeignKey(Cash_request, on_delete=models.CASCADE)
     status1= models.IntegerField(default=0)
 
 

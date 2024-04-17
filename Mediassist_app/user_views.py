@@ -45,7 +45,7 @@ def cash_add(request):
             new_med.user = u
             new_med.save()
             messages.info(request, 'Added Successfully')
-            return redirect('med_view')
+            return redirect('cash_view')
     else:
         form = CashRequestForm()
     return render(request,'users/cash_add.html', {'form':form})

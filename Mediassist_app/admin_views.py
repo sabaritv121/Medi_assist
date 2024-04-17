@@ -50,8 +50,10 @@ def requests(request):
     data = Medicine_approval.objects.all()
     return render(request, 'admin/approval.html', {'data': data})
 
+
+
 def admin_approval(request):
-    data=Medicine_approval.objects.filter(approval__status_1 = 1)
+    data=Medicine_approval.objects.filter(approval__status_1 = 2 )
     return render(request,'admin/approval.html',{'data':data})
 
 
@@ -59,6 +61,7 @@ def admin_approval(request):
 
 def approve_donation(request, id):
     n = Medicine_request.objects.get(id=id)
+    print(n)
     n.status_1 = 2
     n.save()
     messages.info(request, 'Donation Confirmed')

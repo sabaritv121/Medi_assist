@@ -71,3 +71,17 @@ def donate_cash(request,id):
             return redirect('cash_view_cmp')
     return render(request, 'company/donate_cash.html', {'approval': approval})
 
+
+def MyDonations(request):
+    u = request.user
+    cmp = donor.objects.get(user = u)
+    data = Medicine_approval.objects.filter(user = cmp)
+
+    return render(request,'company/mydonations.html',{'data':data})
+
+
+def CashDonation(request):
+    u = request.user
+    cmp = donor.objects.get(user = u)
+    data = Cash_approval.objects.filter(user = cmp)
+    return render(request,'company/cashdonation.html',{'data':data})

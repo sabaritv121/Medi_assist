@@ -51,5 +51,7 @@ urlpatterns = [
    path('donate/<int:id>/', company_views.donate, name='donate'),
    path("cash_view_cmp", company_views.cash_view_cmp, name="cash_view_cmp"),
    path('donate_cash/<int:id>/', company_views.donate_cash, name='donate_cash'),
+   path("med_donation",company_views.MyDonations,name='med_donations'),
+   path('CashDonation',company_views.CashDonation,name='CashDonation'),
 
 ]
